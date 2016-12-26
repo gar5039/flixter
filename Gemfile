@@ -37,6 +37,8 @@ gem 'figaro'
 gem 'fog'
 gem 'mini_magick', '~> 4.3.1'
 gem 'carrierwave-aws'
+gem 'stripe'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
