@@ -4,28 +4,27 @@
       var lessonUrl = $(event.target).data('lesson-url') 
       $('#newLessonForm').attr('action', lessonUrl);
     });
-    $('.lessons').sortable({
+      $('.lessons').sortable({
       update: function( event, ui) {
         $.ajax({
-          type: 'Put',
+          type: 'PUT',
           url: ui.item.data('update-url'),
           dataType: 'json',
           data: { lesson: { row_order_position: ui.item.index()}}
         });
-      }  
+      }
     });
 
     $('.sections').sortable({
       update: function( event, ui) {
         $.ajax({
-          type: 'Put',
+          type: 'PUT',
           url: ui.item.data('update-url'),
           dataType: 'json',
           data: { section: {row_order_position: ui.item.index()}}
         });
       }
     });
-  });
 </script>
 
 <br />
@@ -58,7 +57,7 @@
 
         <ul class="lessons">
           <% section.lessons.rank(:row_order).each do |lesson|  %>
-            <li data-update-url="<%= instructor_lesson_path %>">
+            <li data-update-url="<%= instructor_lesson_path(lesson) %>">
               <div class="col-xs-1">
                 <br />
                 <span class="glyphicon glyphicon-list"></span>
